@@ -1,3 +1,16 @@
 language: ruby
 rvm:
 - 2.3.3
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: "K7rw2ogqcATzsCwXINrDfNsEDo1AIuLVaCeHGQv9I1SiiX6XcG7BRXLGkLzf3NdjEy4A+F+4ewMuK0aaC1yDaOSjTndp0z4JA/10wIKeO7tHezfL2VMViLivoVkJ9bHg/x8VdmyEZezHJWpcOnjhLNmv03ua9PLJNOfOMBCFd3MxV7j019YpiBlcrUSVtptl6j4TofIgvlrF13dv4aK4JaOX1Et9dUHOOXiJ/b/s1opzW7pE/z5CCS6Kpzwg3/SuuvJkjW1W8m/LFXJhTLZul0WOhSQXLDxfneJOOKzKPoIlgMJw1AXBQkEREnwg7uGDXWZrJzpIEKmYpfHM1KWHAVwLHN17D4HYpWHUBcRbBF8ombe4zQ1iUu7iE4ESMBKXWWbnWcOS4qB31KA7C/q4KPu6qWL8QdIrlaREERVP7wRBFT7LQZ7DHGOkZOesjtNXqos6w6G9008C6CRISLNuNcz0w7yh//K7MmBzhZF25u5JEZ8Y/K+B8u5ulBYMclqLSvi3TGz0FdfSuEQNV43GeVG90gfCMcG2HRioiRwI9ERLghg+zqvdo1Vgd1aA1Hp0ugqcpXlxEtK2kq5N8wqhtpbOkgjzB/HS1lc68Dt0PGbqinj7XSquK+DNZDNIVDQgXRvA+hJQ/4wYuuBIfJrY7V7jvinCcrLcaf21+GTq8Eo="
+  app: lp71-lpa2
+  on:
+    repo: BHemez/LP71-LPA2
