@@ -1,14 +1,14 @@
-env:
-  global:
-    - CC_TEST_REPORTER_ID=dac8ae1c1f4962383b4ba3c5a80925b38059d693bbc723fe012e29a1627a5054
 language: ruby
 rvm:
-- 2.4.4
-
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-
-after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- 2.5.3
+script:
+- bundle exec rails db:migrate
+- bundle exec rake
+deploy:
+  provider: heroku
+  api_key:
+    secure: nhIZ6R6aWDRTIUKDKXf75tih+MyKbvog50F6fm1i1Y/1TlzF1K+4vCQ1q6R3rcozxVNetXFzeCvoMeF9n+X1CDGbbn9Zjp9JVMK00BKoHaFz9bmXxb+uEbV0DOX0Uyxp6RBLfiFvStHygYSo+GVkTvT7eDA1dbBF9pdS7f3hjQuFh8MM/sEEWUwm6nOFtbQB0kBhjjS7oeIUAihGJeZ6V6qU5ndco5pf17mmsmFmhwX14+vIuAtsOkbCZxLs95j6ueMINcw1kUGvGrohveRJvxho3PTvigZtTlMvOhXex7+5gu+TAdA7afrrUqeEhBIN46g4WyQcmciIDtyfndSwXh/zlpaLzc3pEV0kz3Cq6pbDdzT745cPLzln/udQplHQ80fCn5FJq6Ym6iyZGvo9OMPCimDY/gUzfYnya1qHutnTX7fuRbvhMtIXkoPabFMrXtIv/xB54bL60yrgJN8hOBBazw3hG10ORvtAc/aMBr4RJIyXf+sK+gwjHMSeF9CQqB/jxcKbotIvlO6C48RSlc7o2cjADATL5TCt8ozqhlfeuqrclft7gYGzPjmZlXR0CYApFdd8EVhqIwtgBALLMD0olmau3AtMK415DuK7kjXlxRe9Vv70nRlx8aLAcCvqdazK2an8kw2TSIDOZQyNmuFPQqKnUNGg5IvXEVmm68g=
+  app: lpa2sgadot
+  on:
+    repo: LPA2-Automne2016/projet-back-P2019
+  run: "rails db:migrate"
