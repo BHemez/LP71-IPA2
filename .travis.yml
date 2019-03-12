@@ -11,3 +11,4 @@ deploy:
   app: lp71-lpa2
   on:
     repo: BHemez/LP71-LPA2
+  run: "rake db:migrate"
