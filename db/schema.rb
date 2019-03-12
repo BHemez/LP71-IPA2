@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_01_094919) do
+ActiveRecord::Schema.define(version: 2019_03_12_155905) do
+
+  create_table "produits", force: :cascade do |t|
+    t.string "nom"
+    t.text "description"
+    t.decimal "prix", precision: 8, scale: 2
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "name"
